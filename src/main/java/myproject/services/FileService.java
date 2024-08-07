@@ -5,6 +5,7 @@ import myproject.repositories.FileRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FileService {
@@ -15,7 +16,8 @@ public class FileService {
         this.fileRepository = fileRepository;
     }
 
-    public List<File> getFile(String filename) {
+    public File getFile(String filename) {
+        return fileRepository.findByFilename(filename);
        return null; // fixme ap fileRepository.find;
     }
 
@@ -23,9 +25,15 @@ public class FileService {
         return false; // fixme ap fileRepository.
     }
 
-    public String putFile(String filename) {
+    public String putFile(File file, String filename) {
 
-        return null; // fixme ap fileRepository.
+        if (! fileRepository.existsById(filename)) {
+            // todo return error 400
+        } else {
+            fileRepository.save(file);
+        }
+        // todo error 500
+        return null; // fixme ap what to return?
     }
 
     public boolean uploadFile(File file, String filename) {

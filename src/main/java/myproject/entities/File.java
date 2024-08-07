@@ -9,12 +9,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class File {
-    @Id
-    private String filename;
     private String hash;
     private String file;        // todo ap ???
 
     public File() {}
 }
-
-

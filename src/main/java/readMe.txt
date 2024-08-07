@@ -151,7 +151,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
         '500':
-          description: Error upload file
+          description: Error upload file (ap wrong filename)
           content:
             application/json:
               schema:
